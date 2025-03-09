@@ -1,0 +1,14 @@
+version: '2.30.3'
+
+services:
+    web: node:22-alpine
+    container_name: my-node-app
+    workind_dir: /app
+    volumes:
+      - .:/app
+    ports:
+      - "3000:3000"
+      - "5433:5432"
+    depens_on:
+      -prisma
+    
