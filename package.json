@@ -1,0 +1,21 @@
+{
+  "name": "week-25-docker-compose",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc -b",
+    "dev": "pnpm run build && pnpm run ./dist/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@prisma/client": "6.4.1",
+    "@types/express": "^5.0.0",
+    "express": "^4.21.2",
+    "prisma": "^6.4.1"
+  }
+}
