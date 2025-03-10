@@ -1,14 +1,28 @@
-version: '2.30.3'
+version: '3.8'
 
 services:
-    web: node:22-alpine
-    container_name: my-node-app
-    workind_dir: /app
-    volumes:
-      - .:/app
+  postgres:
+    image: postgres
+    ports:
+      - "5433:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: passmebeta
+      POSTGRES_DB: postgres
+
+  user_app:
+    build:
+      context: ./
+      dockerfile: Dockerfile
     ports:
       - "3000:3000"
-      - "5433:5432"
-    depens_on:
-      -prisma
-    
+    environment:
+      DATABASE_URL: "postgresql://postgres:passmebeta@postgres:5432/postgres"
+    depends_on:
+      - postgres
+    networks:
+      - netOne
+
+networks:
+  netOne:
+    driver: bridge
